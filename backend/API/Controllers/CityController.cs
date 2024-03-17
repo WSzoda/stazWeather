@@ -1,10 +1,13 @@
+using System.Security.Claims;
 using API.Models;
 using API.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("cities/")]
 public class CityController : ControllerBase
 {
@@ -25,8 +28,9 @@ public class CityController : ControllerBase
     [HttpPost]
     public IActionResult AddCity(City city)
     {
-        repository.Add(city);
-        return Ok();
+        var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)!.Value);
+        repository.Add(city, userId);
+        return Ok(city);
     }
 
     [HttpDelete("{id}")]

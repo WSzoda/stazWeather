@@ -11,8 +11,9 @@ public class CityRepository : AbstractRepository<City>, ICityRepository
     {
     }
 
-    public void Add(City entity)
+    public void Add(City entity, int userId)
     {
+        entity.CreatedById = userId;
         dbSet.Add(entity);
         context.SaveChanges();
     }
