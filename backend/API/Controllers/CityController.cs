@@ -21,15 +21,17 @@ public class CityController : ControllerBase
     [HttpGet]
     public IActionResult GetCities()
     {
-        var cities = repository.GetAll();
+        var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)!.Value);
+        var cities = repository.GetAll(userId);
         return Ok(cities);
     }
 
     [HttpPost]
-    public IActionResult AddCity(City city)
+    public IActionResult AddCity(CityDto city)
     {
         var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)!.Value);
-        repository.Add(city, userId);
+        var cityNew = new City { CityName = city.CityName };
+        repository.Add(cityNew, userId);
         return Ok(city);
     }
 

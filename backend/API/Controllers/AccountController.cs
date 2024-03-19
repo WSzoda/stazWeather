@@ -1,5 +1,6 @@
 ﻿using API.Models;
 using API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -14,8 +15,7 @@ public class AccountController : ControllerBase
     {
         _accountService = accountService;
     }
-
-
+    
     [HttpPost("register")]
     public ActionResult RegisterUser([FromBody] RegisterUserDto dto)
     {
@@ -28,6 +28,6 @@ public class AccountController : ControllerBase
     {
         string token = _accountService.GenerateJwt(dto);
 
-        return Ok(token);
+        return Ok(new LoginSuccesDto {token = token});
     }
 }

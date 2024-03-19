@@ -4,7 +4,7 @@ namespace API.Repositories.Interfaces;
 
 public interface IRepository<TEntity> where TEntity : BaseEntity
 {
-    IEnumerable<TEntity> GetAll();
+    IEnumerable<TEntity> GetAll(int userId);
 
     IEnumerable<TEntity> GetAll(int pageNumber, int RowCount);
     TEntity GetById(int id);

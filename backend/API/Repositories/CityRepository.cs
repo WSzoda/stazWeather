@@ -33,9 +33,10 @@ public class CityRepository : AbstractRepository<City>, ICityRepository
         context.SaveChanges();
     }
 
-    public IEnumerable<City> GetAll()
+    public IEnumerable<City> GetAll(int userId)
     {
-        return dbSet.ToList();
+
+        return dbSet.Where(c => c.CreatedById == userId).ToList();
     }
 
     public IEnumerable<City> GetAll(int pageNumber, int RowCount)

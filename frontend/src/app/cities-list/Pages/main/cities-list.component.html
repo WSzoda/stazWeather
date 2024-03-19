@@ -1,0 +1,4 @@
+<app-city-card-add (addNewCity)="addNewCity($event)"/>
+<div *ngFor="let city of cities">
+  <app-city-card [city]="city"/>
+</div>

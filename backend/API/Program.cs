@@ -37,6 +37,19 @@ builder.Services.AddAuthentication(option =>
     };
 });
 
+var MySpecificOrigins = "_mySpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MySpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200");
+            policy.AllowAnyHeader();
+            policy.AllowAnyMethod();
+        });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation();
@@ -51,6 +64,8 @@ builder.Services.AddSingleton(authenticationSettings);
 builder.Services.AddScoped<IAuthorizationHandler, ResourceOperationRequirementHandler>();
 
 var app = builder.Build();
+
+app.UseCors(MySpecificOrigins);
 
 app.UseAuthentication();
 
