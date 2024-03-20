@@ -13,11 +13,6 @@ export class GeocodingService {
   private apiKey: string = environment.apiKey;
 
   getCityLocation(cityName: string): Observable<CityLocation[]> {
-    try {
-      return this.httpClient.get<CityLocation[]>(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${this.apiKey}`);
-    } catch (error) {
-      console.error('Error fetching city location:', error);
-      throw error;
-    }
+    return this.httpClient.get<CityLocation[]>(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${this.apiKey}`);
   }
 }

@@ -19,7 +19,7 @@ import {NgIf} from "@angular/common";
           <a routerLink="/register">Register</a>
         </div>
         <div *ngIf="authService.currentUserSig()?.token">
-          <span (click)="logout()">Logout</span>
+          <button (click)="logout()">Logout</button>
         </div>
       </div>
     </header>

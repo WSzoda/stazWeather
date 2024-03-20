@@ -25,14 +25,15 @@ header {
 }
 
 .header-right a,
-.header-right span {
+.header-right button {
   text-decoration: none;
   color: #333;
   background: white;
   padding: 5px 10px;
+  margin-right: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  
+
 }
 
 .header-right a:hover,

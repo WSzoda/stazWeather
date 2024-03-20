@@ -18,16 +18,14 @@ import {RegisterForm} from "../../Models/registerForm";
 export class RegisterComponent {
   fb = inject(FormBuilder)
   authService = inject(AuthService)
-  router = inject(Router)
 
   form = this.fb.nonNullable.group({
-    email: ['', Validators.required, Validators.email],
-    password: ['', Validators.required],
-    confirmPassword: ['', Validators.required]
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
+    confirmPassword: ['', [Validators.required]]
   });
 
   onSubmit(): void {
     this.authService.registerUser(this.form.getRawValue() as RegisterForm)
-    this.router.navigateByUrl("/login")
   }
 }

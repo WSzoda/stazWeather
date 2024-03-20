@@ -1,4 +1,13 @@
-<app-city-card-add (addNewCity)="addNewCity($event)"/>
-<div class="city-list">
-  <app-city-card [data]="city" *ngFor="let city of cityWithWeather" (deleteCity)="deleteCity($event)"/>
+<div *ngIf="authenticationService.currentUserSig()?.token">
+  <app-city-card-add (addNewCity)="addNewCity($event)"/>
+  <app-confirmation-dialog *ngIf="showConfirmationDialog" [message]="'Are you sure you want to delete this city?'"
+                           [title]="'Delete City'"
+                           (confirmed)="onConfirmation($event)"/>
+  <div class="city-list">
+    <app-city-card [data]="city" *ngFor="let city of cityWithWeather" (deleteCity)="openConfirmationDialog($event)"
+                   (editCity)="editCity($event)"/>
+  </div>
+</div>
+<div *ngIf="authenticationService.currentUserSig() === null">
+  <h1>Log in to app, to use it</h1>
 </div>

@@ -50,9 +50,13 @@ public class CityController : ControllerBase
     }
 
     [HttpPatch]
-    public IActionResult EditCity(City city)
+    public IActionResult EditCity(CityDto city)
     {
-        repository.Update(city);
+        var entity = repository.GetById(city.Id);
+        entity.Lat = city.Lat;
+        entity.Lon = city.Lon;
+        entity.CityName = city.CityName;
+        repository.Update(entity);
         return Ok();
     }
 }

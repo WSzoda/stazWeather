@@ -36,7 +36,7 @@ public class CityRepository : AbstractRepository<City>, ICityRepository
     public IEnumerable<City> GetAll(int userId)
     {
 
-        return dbSet.Where(c => c.CreatedById == userId).ToList();
+        return dbSet.Where(c => c.CreatedById == userId).OrderBy(c => c.Id).ToList();
     }
 
     public IEnumerable<City> GetAll(int pageNumber, int RowCount)

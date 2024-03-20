@@ -21,12 +21,11 @@ export class LoginComponent {
   router = inject(Router)
 
   form = this.fb.nonNullable.group({
-    email: ['', Validators.required, Validators.email],
-    password: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
   });
 
   onSubmit(): void {
     this.authService.loginUser(this.form.getRawValue() as LoginForm);
-    this.router.navigateByUrl('/');
   }
 }

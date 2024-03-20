@@ -13,11 +13,6 @@ export class WeatherService {
   private apiKey: string = environment.apiKey;
 
   getWeather(cityLocation: CityLocation): Observable<WeatherResponse> {
-    try {
-      return this.httpClient.get<WeatherResponse>(`https://api.openweathermap.org/data/3.0/onecall?lat=${cityLocation.lat}&lon=${cityLocation.lon}&units=metric&appid=${this.apiKey}`);
-    } catch (error) {
-      console.error('Error fetching city weather:', error);
-      throw error;
-    }
+    return this.httpClient.get<WeatherResponse>(`https://api.openweathermap.org/data/3.0/onecall?lat=${cityLocation.lat}&lon=${cityLocation.lon}&units=metric&appid=${this.apiKey}`);
   }
 }

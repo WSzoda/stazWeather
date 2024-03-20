@@ -1,9 +1,10 @@
 <div class="weather-card">
   <div class="header">
-    <h1>{{ data.city.cityName }}</h1>
+    <h1 *ngIf="!isEdited">{{ data.city.cityName }}</h1>
+    <input *ngIf="isEdited" type="text" [(ngModel)]="data.city.cityName" (keyup.enter)="handleEditButton()">
     <div class="buttons">
       <button class="edit-btn">
-        <fa-icon [icon]="faEdit"/>
+        <fa-icon [icon]="faEdit" (click)="handleEditButton()"/>
       </button>
       <button class="delete-btn" (click)="deleteCity.emit(data.city.id)">
         <fa-icon [icon]="faTrash"/>
