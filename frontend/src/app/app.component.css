@@ -1,0 +1,51 @@
+header {
+  background-color: #41c9e2;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left h1 {
+  margin: 0;
+}
+
+.header-left h1 a {
+  text-decoration: none;
+  color: black;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-right > div {
+  margin-left: 10px;
+}
+
+.header-right a,
+.header-right span {
+  text-decoration: none;
+  color: #333;
+  background: white;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  
+}
+
+.header-right a:hover,
+.header-right span:hover {
+  background-color: #ddd;
+}
+
+.content {
+  padding: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .header-right {
+    margin-top: 10px;
+  }
+}

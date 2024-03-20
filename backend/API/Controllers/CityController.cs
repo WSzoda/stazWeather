@@ -30,7 +30,7 @@ public class CityController : ControllerBase
     public IActionResult AddCity(CityDto city)
     {
         var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)!.Value);
-        var cityNew = new City { CityName = city.CityName };
+        var cityNew = new City { CityName = city.CityName, Lat = city.Lat, Lon = city.Lon};
         repository.Add(cityNew, userId);
         return Ok(city);
     }

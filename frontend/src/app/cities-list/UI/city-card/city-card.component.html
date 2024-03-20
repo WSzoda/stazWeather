@@ -1,5 +1,18 @@
-<div>
-  <p>
-    {{city.cityName}}
-  </p>
+<div class="weather-card">
+  <div class="header">
+    <h1>{{ data.city.cityName }}</h1>
+    <div class="buttons">
+      <button class="edit-btn">
+        <fa-icon [icon]="faEdit"/>
+      </button>
+      <button class="delete-btn" (click)="deleteCity.emit(data.city.id)">
+        <fa-icon [icon]="faTrash"/>
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <img class="weather-icon"
+         [src]="'https://openweathermap.org/img/wn/'+ data.weather.current.weather[0].icon +'@4x.png'" alt="weather">
+    <h4>{{ data.weather.current.temp }}°C</h4>
+  </div>
 </div>

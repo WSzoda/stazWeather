@@ -1,0 +1,24 @@
+.city-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+app-city-card {
+  flex: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  app-city-card {
+    max-width: 50%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  app-city-card {
+    max-width: 25%;
+  }
+}

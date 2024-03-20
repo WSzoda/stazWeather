@@ -1,5 +1,6 @@
-<div>
-  <form (ngSubmit)="onSubmit()">
-    <input type="text" [(ngModel)]="city" name="name"/>
+<div class="city-form">
+  <form (ngSubmit)="onSubmit()" class="form">
+    <input type="text" [(ngModel)]="city" name="name" placeholder="Enter city name"/>
+    <button type="submit">Add City</button>
   </form>
 </div>

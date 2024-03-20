@@ -1,0 +1,37 @@
+.city-form {
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.form {
+  display: flex;
+}
+
+input[type="text"] {
+  width: calc(100% - 90px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  margin-right: 5px;
+}
+
+button[type="submit"] {
+  width: 80px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+@media only screen and (max-width: 600px) {
+  input[type="text"] {
+    width: calc(100% - 85px);
+  }
+}

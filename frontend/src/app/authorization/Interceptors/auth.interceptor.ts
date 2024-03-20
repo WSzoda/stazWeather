@@ -8,11 +8,14 @@ import {User} from "../Models/user";
 export class authInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = localStorage.getItem('token') ?? '';
-    let request = req.clone({
-      setHeaders: {
-        Authorization: token ? `Bearer ${token}`: ''
-      }
-    });
-    return next.handle(request);
+    if (req.url.startsWith('http://localhost:5202')) {
+      const modifiedReq = req.clone({
+        setHeaders: {
+          Authorization: token ? `Bearer ${token}` : ''
+        }
+      });
+      return next.handle(modifiedReq);
+    }
+    return next.handle(req);
   }
 }

@@ -13,11 +13,11 @@ import {CityPost} from "../../Models/cityPost";
 })
 export class CityCardAddComponent {
   @Output()
-  addNewCity: EventEmitter<CityPost> = new EventEmitter<CityPost>();
+  addNewCity: EventEmitter<string> = new EventEmitter<string>();
   city: string = '';
 
   onSubmit(): void {
-    this.addNewCity.emit({cityName: this.city} as CityPost);
+    this.addNewCity.emit(this.city);
     this.city = '';
   }
 }

@@ -10,13 +10,17 @@ import {NgIf} from "@angular/common";
   imports: [RouterOutlet, RouterModule, HttpClientModule, NgIf],
   template: `
     <header>
-      <h1>Weather App</h1>
-      <div *ngIf="authService.currentUserSig() === null">
-        <a routerLink="/login">Login</a>
-        <a routerLink="/register">Register</a>
+      <div class="header-left">
+        <h1><a routerLink="/">Weather App</a></h1>
       </div>
-      <div *ngIf="authService.currentUserSig()?.token">
-        <span (click)="logout()">Logout</span>
+      <div class="header-right">
+        <div *ngIf="authService.currentUserSig() === null">
+          <a routerLink="/login">Login</a>
+          <a routerLink="/register">Register</a>
+        </div>
+        <div *ngIf="authService.currentUserSig()?.token">
+          <span (click)="logout()">Logout</span>
+        </div>
       </div>
     </header>
     <main>
@@ -31,9 +35,10 @@ export class AppComponent {
   authService = inject(AuthService);
   router = inject(Router)
 
-  logout() : void {
+  logout(): void {
     this.authService.logoutUser();
     this.router.navigateByUrl('/');
   }
+
   title = 'frontend';
 }
