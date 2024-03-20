@@ -23,9 +23,9 @@ export class CityCardComponent {
   @Input({required: true})
   data!: { city: City, weather: WeatherResponse };
   @Output()
-  deleteCity = new EventEmitter<number>();
+  deleteCity: EventEmitter<number> = new EventEmitter<number>();
   @Output()
-  editCity = new EventEmitter<number>();
+  editCity: EventEmitter<number> = new EventEmitter<number>();
 
   faEdit = faEdit;
   faTrash = faTrash;

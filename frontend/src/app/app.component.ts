@@ -8,27 +8,7 @@ import {NgIf} from "@angular/common";
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, RouterModule, HttpClientModule, NgIf],
-  template: `
-    <header>
-      <div class="header-left">
-        <h1><a routerLink="/">Weather App</a></h1>
-      </div>
-      <div class="header-right">
-        <div *ngIf="authService.currentUserSig() === null">
-          <a routerLink="/login">Login</a>
-          <a routerLink="/register">Register</a>
-        </div>
-        <div *ngIf="authService.currentUserSig()?.token">
-          <button (click)="logout()">Logout</button>
-        </div>
-      </div>
-    </header>
-    <main>
-      <section class="content">
-        <router-outlet></router-outlet>
-      </section>
-    </main>
-  `,
+  templateUrl: 'app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
@@ -37,8 +17,5 @@ export class AppComponent {
 
   logout(): void {
     this.authService.logoutUser();
-    this.router.navigateByUrl('/');
   }
-
-  title = 'frontend';
 }

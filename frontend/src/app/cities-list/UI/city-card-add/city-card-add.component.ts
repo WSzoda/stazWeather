@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {CityPost} from "../../Models/cityPost";
 
 @Component({
   selector: 'app-city-card-add',

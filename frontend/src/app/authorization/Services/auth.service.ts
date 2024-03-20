@@ -4,6 +4,7 @@ import {RegisterForm} from "../Models/registerForm";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoginForm} from "../Models/loginForm";
 import {Router} from "@angular/router";
+import {environment} from "../../../environment/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class AuthService {
   currentUserSig = signal<User | undefined | null>(undefined);
   http = inject(HttpClient)
   router = inject(Router)
+  private apiUrl: string = environment.myApiUrl;
 
   constructor() {
     const token = localStorage.getItem('token');
@@ -24,7 +26,7 @@ export class AuthService {
 
   registerUser(data: RegisterForm): void {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    this.http.post('http://localhost:5202/account/register', data, {
+    this.http.post(`${(this.apiUrl)}/account/register`, data, {
       headers: headers
     }).subscribe({
       complete: () => {
@@ -34,7 +36,7 @@ export class AuthService {
   }
 
   loginUser(data: LoginForm): void {
-    this.http.post<User>('http://localhost:5202/account/login', data, {
+    this.http.post<User>(`${this.apiUrl}/account/login`, data, {
       responseType: 'json'
     })
       .subscribe({
@@ -51,5 +53,6 @@ export class AuthService {
   logoutUser(): void {
     this.currentUserSig.set(null);
     localStorage.removeItem('token');
+    this.router.navigateByUrl("");
   }
 }

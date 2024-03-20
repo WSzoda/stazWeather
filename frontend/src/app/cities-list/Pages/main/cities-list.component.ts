@@ -1,16 +1,12 @@
 import {Component, inject} from '@angular/core';
 import {AuthService} from "../../../authorization/Services/auth.service";
-import {HttpClient} from "@angular/common/http";
 import {CitiesService} from "../../Services/cities.service";
 import {City} from "../../Models/city";
 import {CityCardAddComponent} from "../../UI/city-card-add/city-card-add.component";
 import {CityCardComponent} from "../../UI/city-card/city-card.component";
 import {NgFor, NgIf} from "@angular/common";
-import {firstValueFrom} from "rxjs";
 import {WeatherService} from "../../../weather-info/Services/weather.service";
-import {CityLocation} from "../../../weather-info/Models/cityLocation";
 import {WeatherResponse} from "../../../weather-info/Models/weatherResponse";
-import {Router} from "@angular/router";
 import {ConfirmationDialogComponent} from "../../../shared/confirmation-dialog/confirmation-dialog.component";
 
 @Component({
